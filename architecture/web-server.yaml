@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: web-server
 spec:
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -14,10 +14,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: app
+              - key: cache
                 operator: In
                 values:
-                - web-cache
+                - active
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: echoserver
